@@ -44,6 +44,25 @@ res2 = {
     { user_id: 2, rating: 4 },
   ],
 }
+res3 = {
+  id: 2,
+  name: "Jimmy Johns",
+  location: {
+    city: "SLC",
+    state: "UT",
+  },
+  delivery: true,
+  days_open: "mon,tues,wed,thur,fri,sat",
+  likes: 700,
+  dishes: [
+    { name: "BLT", price: 7.25, ingredients: ["Bacon", "Lettuce", "Tamato"] },
+    { name: "J.J. Gargantuan", price: 9.25, ingredients: ["Salami", "Capicola", "Turkey", "Roast beef", "Ham" "cheese"] },
+  ],
+  reviews: [
+    { user_id: 1, rating: 9 },
+    { user_id: 2, rating: 10 },
+  ],
+}
 
 #--------------------------
 #putting both data categories into arrays 
@@ -83,10 +102,6 @@ access_from_review(1)
     puts restaurant[:reviews][0]
   end
 end
-
-
-# access res1 reviews    *** done up above ***
-
 
 # what does this output res1[:dishes]
 # puts out the values of both dishes objects and all of the key,value pairs
@@ -131,9 +146,43 @@ print_menu(@restaurants_arr[0])
 print_menu(@restaurants_arr[1])
 
 # create that takes a res and returns average review
+# The print_rev function returns me the revies in a new array and the review average takes the review number rating and runs the calculation to get an average.
+#then prints a message to the console 
 
+def print_rev(res)
+    rev_arr = []
+    res[:reviews].each do |review|
+      rev_arr.push(review)
+    end
+  return rev_arr
+end
+
+def review_average(res)
+  total_rev = print_rev(res)[0][:rating] + print_rev(res)[1][:rating]
+  review_ave = total_rev / 2
+  "#{res[:name]}'s review average is: #{review_ave}"
+end
+
+puts review_average(@restaurants_arr[0])
+puts review_average(@restaurants_arr[1])
+
+# a simple that takes a restaurants and adds to your array
+def add_rest(res)
+  @restaurants_arr.push(res)
+end
+
+add_rest(res3)
 
 # create an array of restaurants and do CRUD actions
-# a simple that takes a restaurants and adds to your array
-#      a simple that takes restaurants and updates that to your array
+@restaurants_arr[2][:days_open] = "Monday, Tuesday, Wednesday, Thursday, Friday, Closed Saturday (for flag day)"
+
+puts @restaurants_arr[2][:days_open]
+
+
 # loop through your restaurants and return those with likes > 500 (select/filter)
+
+@restaurants_arr.each do |res|
+  if res[:likes] > 500 
+    puts res[:name]
+  end
+end
