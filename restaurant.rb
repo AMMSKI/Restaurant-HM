@@ -188,7 +188,7 @@ puts @restaurants_arr[2][:days_open]
 end
 
 # this .select returns the whole restaurant hash that has over 500 likes and creates a new array 'high_likes' with only the restaurants with high likes
-res
+
 high_likes = @restaurants_arr.select do |res|
   res[:likes] > 500 
 end
