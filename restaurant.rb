@@ -94,8 +94,8 @@ end
 access_from_review(1)
 
 
-# this prints the reviews data for user 1 at both resturants by accessing the array of resturants 
-# then the individual resturant in the array, then the variable: reviews which holds and array, then accessing the index of that array
+# this prints the reviews data for user 1 at both restaurants by accessing the array of restaurants 
+# then the individual restaurant in the array, then the variable: reviews which holds and array, then accessing the index of that array
 #doing this for both restaurants with the .each mehtod
 @restaurants_arr.each do |restaurant|
   if restaurant[:reviews][0][:user_id] == 1
@@ -132,7 +132,7 @@ user_discrip(@users_arr[1])
 
 # create a method that takes a res and returns the menu of that res
 #
-#The commented out code below loops the whole @restaurants_arr and showes me both resturants menus .. not what I wanted to do but could be helpful code later
+#The commented out code below loops the whole @restaurants_arr and showes me both restaurants menus .. not what I wanted to do but could be helpful code later
 def print_menu(res)
   puts "#{res[:name]}"
   # @restaurants_arr.each do |res|
@@ -180,9 +180,18 @@ puts @restaurants_arr[2][:days_open]
 
 
 # loop through your restaurants and return those with likes > 500 (select/filter)
-
+# the .each just returns the names of the restaurants that have over 500 likes
 @restaurants_arr.each do |res|
   if res[:likes] > 500 
     puts res[:name]
   end
 end
+
+# this .select returns the whole restaurant hash that has over 500 likes and creates a new array 'high_likes' with only the restaurants with high likes
+res
+high_likes = @restaurants_arr.select do |res|
+  res[:likes] > 500 
+end
+
+p high_likes
+
