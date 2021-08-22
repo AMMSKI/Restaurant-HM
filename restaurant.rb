@@ -195,3 +195,11 @@ end
 
 p high_likes
 
+#doing the same action as above but with .map  and returning a string witht the restaurants that have over 500 likes 
+
+better_likes = @restaurants_arr.map do |res|
+  if res[:likes] > 500 
+    puts "#{res[:name]} has more that 500 likes"
+  end
+end
+
